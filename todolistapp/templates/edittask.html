@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</head>
+<body>
+    <div style="margin: 100px auto;" class="row d-flex justify-content-center container">
+        <div class="col-md-8">
+            <div class="card-hover-shadow-2x mb-3 card">
+                <div class="card-header-tab card-header">
+                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Task Lists</div>
+                </div>
+                <div class="scroll-area-sm">
+                    <perfect-scrollbar class="ps-show-limits">
+                        <div style="position: static;" class="ps ps--active-y">
+                            <div class="ps-content">
+                                <ul class=" list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="todo-indicator bg-warning"></div>
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                
+                                                <div class="widget-content-left">
+                                                    <form action="{% url 'edittask' task.id %}" method="POST">
+                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: left;height: 40px;padding-left: 20px;border-radius: 10px;" placeholder="Add your Task" value="{{task.title}}" name='task' type="text" required>
+                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: left;height: 40px;margin-top: 20px;padding-left: 20px;;border-radius: 10px;" value="{{task.desc}}" placeholder="Add Task Description" name='desc' type="text"><br>
+                                                        {% if task.complete %}
+                                                        <input style="margin-top: 20px;" type="checkbox" id="vehicle1" name="checkbox" value="Bike" checked>
+                                                        {% else %}
+                                                        <input style="margin-top: 20px;" type="checkbox" id="vehicle1" name="checkbox" value="Bike">
+                                                        {% endif %}
+                                                        <label for="vehicle1"> Completed</label><br>
+                                                        <button type="submit" style="margin-top: 40px;margin-left: 260px;" class="btn btn-primary">Update Task</button></div>
+                                                        {% csrf_token %}
+                                                    </form>
+                                                    </div>
+                                            
+                                                
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </perfect-scrollbar>
+                </div>
+                <div class="d-block text-right card-footer"><a href="{% url 'index' %}" class="btn btn-primary button">Return to Dashboard</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

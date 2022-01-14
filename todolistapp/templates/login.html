@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,19 +28,19 @@
                                     <li class="list-group-item">
                                         <div class="todo-indicator bg-warning"></div>
                                         <div class="widget-content p-0">
-                                            <div class="widget-content-wrapper">
+                                            <div >
                                                 
-                                                <div class="widget-content-left">
-                                                    <form action="{% url 'login' %}" method="POST">
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;;border-radius: 10px;" placeholder="Username" name='username' type="text" required>
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;margin-top: 20px;;border-radius: 10px;" placeholder="Password" name='password' type="password" required>
-                                                        <button type="submit" style="margin-top: 40px;margin-left: 270px;" class="btn btn-primary">Login</button></div>
+                                                <!-- <div class="widget-content-left"> -->
+                                                    <form class="widget-content-wrapper" action="{% url 'login' %}" method="POST">
+                                                    <input class="widget-heading" placeholder="Username" name='username' type="text" required>
+                                                    <input class="widget-heading" placeholder="Password" name='password' type="password" required>
+                                                    <button type="submit" class="btn btn-primary btm">Login</button></div>
                                                         {% csrf_token %}
                                                     </form>
                                                     </div>
                                             
                                                 
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     </li>
                                 </ul>
@@ -51,5 +52,19 @@
             </div>
         </div>
     </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+    
+    
+    
+    {% for msg in messages %}
+    <script>
+      swal(
+              '{{msg}}'
+        )
+    </script>
+    {% endfor %}
 </body>
 </html>

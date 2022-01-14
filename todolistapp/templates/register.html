@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,19 +28,21 @@
                                     <li class="list-group-item">
                                         <div class="todo-indicator bg-warning"></div>
                                         <div class="widget-content p-0">
-                                            <div class="widget-content-wrapper">
                                                 
-                                                <div class="widget-content-left">
-                                                    <form action="{% url 'register' %}" method="POST">
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;;border-radius: 10px;" placeholder="Username" name='username' type="text" required>
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;;border-radius: 10px;margin-top: 10px;" placeholder="First Name" name='firstname' type="text" required>
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;;border-radius: 10px;margin-top: 10px;" placeholder="Last Name" name='lastname' type="text" required>
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;;border-radius: 10px;margin-top: 10px;" placeholder="Email" name='email' type="text" required>
-                                                    <div class="widget-heading"><input style="border: 2px solid black;width: 600px;align-items: center;text-align: center;height: 40px;margin-top: 10px;border-radius: 10px;" placeholder="Password" name='password' type="password" required>
-                                                    <button type="submit" style="margin-top: 40px;margin-left: 270px;" class="btn btn-primary">Signup</button></div>
+                                            
+                                                <div>
+                                                
+                                                
+                                                    <form class="widget-content-wrapper" action="{% url 'register' %}" method="POST">
+                                                    <input class="widget-heading" placeholder="Username" name='username' type="text" required>
+                                                    <input class="widget-heading" placeholder="First Name" name='firstname' type="text" required>
+                                                    <input class="widget-heading" placeholder="Last Name" name='lastname' type="text" required>
+                                                    <input class="widget-heading" placeholder="Email" name='email' type="text" required>
+                                                    <input class="widget-heading" placeholder="Password" name='password' type="password" required>
+                                                    <button type="submit" class="btn btm btn-primary">Signup</button>
                                                         {% csrf_token %}
                                                     </form>
-                                                    </div>
+                                                </div>
                                             
                                                 
                                             </div>
@@ -54,5 +57,19 @@
             </div>
         </div>
     </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="{% static 'js/sweetalert.min.js' %}"></script>
+
+
+
+{% for msg in messages %}
+<script>
+  swal(
+      	'{{msg}}'
+    )
+</script>
+{% endfor %}
 </body>
 </html>
